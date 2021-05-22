@@ -10,6 +10,9 @@ models => database schema
 routers => application routes
 app.js => entry file
 
+Schema validation
+search feature
+
 views
 tests
 config

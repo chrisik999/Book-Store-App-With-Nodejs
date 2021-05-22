@@ -21,6 +21,17 @@ exports.createNewBook =  (req,res) => {
 }
 
 exports.fetchBooks = function (req, res) {
+    let filters = {};
+    //check req query for filters
+    if(req.query.category){
+        filters.category = req.query.category;
+    }
+    if(req.query.author) {
+        filters.author = req.query.author
+    }
+    //if there are filters, use them in Model.find query
+    //fetch all books
+    console.log(filters);
     Book.find({},(err, books) =>{
         if(err){
             return res.status(404).json(err);
