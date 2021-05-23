@@ -28,7 +28,7 @@ const bookSchema = new mongoose.Schema({
     },
     category:{
         type:"String",
-        enum: ["fiction", "non-fiction","comics", "Mafia","moving","inspirational","family", "betrayal"],
+        enum: ["fiction", "non-fiction","comics", "Mafia","moving","inspirational","family", "betrayal","sports"],
         default: "fiction"
     },
     purchaseCount: {

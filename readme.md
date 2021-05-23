@@ -10,7 +10,7 @@ models => database schema
 routers => application routes
 app.js => entry file
 
-Schema validation
+Schema validation:
 search feature
 
 views

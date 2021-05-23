@@ -3,14 +3,7 @@ const Book = require('../models/book');
 exports.createNewBook =  (req,res) => {
     const createBook = req.body.book;
     Book.create({
-        title: createBook.title,
-        author: createBook.author,
-        description: createBook.description,
-        category: createBook.category,
-        purchaseCount: createBook.purchaseCount,
-        imageUrl: createBook.imageUrl,
-        tags: createBook.tags
-
+        ...createBook
     },(err,newBook)=>{
         if(err){
             return res.status(500).json({err});
@@ -21,18 +14,18 @@ exports.createNewBook =  (req,res) => {
 }
 
 exports.fetchBooks = function (req, res) {
-    let filters = {};
+    let conditions = {};
     //check req query for filters
     if(req.query.category){
-        filters.category = req.query.category;
+        //if there are filters, use them in Model.find query
+        conditions.category = req.query.category;
     }
     if(req.query.author) {
-        filters.author = req.query.author
+        //if there are filters, use them in Model.find query
+        conditions.author = req.query.author
     }
-    //if there are filters, use them in Model.find query
     //fetch all books
-    console.log(filters);
-    Book.find({},(err, books) =>{
+    Book.find(conditions,(err, books) =>{
         if(err){
             return res.status(404).json(err);
         }else{
